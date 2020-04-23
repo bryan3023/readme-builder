@@ -1,10 +1,15 @@
+/*
+  Collect the information needed to create a readme by daisy-chaining
+  prompts (and a few API calls).
+ */
+
 const
   inquirer = require("inquirer"),
   axios = require("axios");
 
-const userInfo = {};
 
 const
+  repoInfo = {},
   repoQuestions = [
     {
       message: "Please provide a brief description of this project.",
@@ -19,6 +24,7 @@ const
         "GPLv2",
         "GPLv3",
         "BSD",
+        "ISC",
         "(to be determined)"
       ]
     },
@@ -42,7 +48,8 @@ const
   emailPrompt =  {
     message: "Email not found. Please provide or hit enter to leave blank.",
     name: "email"
-  }
+  };
+
 
 function getUserInfo() {
   inquirer.prompt([
@@ -52,10 +59,10 @@ function getUserInfo() {
     }
   ]).then(({username}) => {
     const url = `https://api.github.com/users/${username}`
-    userInfo.username = username;
 
     axios.get(url).then(({data}) => {
-      userInfo.avatar_url = data.avatar_url;
+      repoInfo.ownerName = username;
+      repoInfo.avatar_url = data.avatar_url;
       chooseRepos(data.repos_url);
     })  
   });
@@ -74,21 +81,27 @@ function chooseRepos(repos_url) {
         choices: choices
       }
     ]).then(({repo}) => {
-      userInfo.repo = repo;
+      repoInfo.name = repo;
       promptRepoQuestions();
     })
   })
 }
 
+
 function promptRepoQuestions() {
-  if (!userInfo.email) {
+  if (!repoInfo.email) {
     repoQuestions.unshift(emailPrompt);
   }
 
   inquirer.prompt(repoQuestions).then(response => {
-    console.log(response);
+    for (let item in response) {
+      repoInfo[item] = response[item];
+    }
+
+    console.log(repoInfo);
   });
 }
+
 
 module.exports = {
   getRepoInfo: getUserInfo
