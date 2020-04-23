@@ -23,7 +23,7 @@ n/a
 
 ## Usage
 
-Answer questions as quickly as possible, then add your initials to the scoreboard.
+Answer questions as quickly as you can, then add your initials to the scoreboard.
 
 ## License
 
@@ -45,6 +45,6 @@ echo "Thoughts and prayers"
 
 For questions, please contact:
 
-<img src="https://avatars1.githubusercontent.com/u/28061504?v=4" alt="bryan3023's profile picture" style="height: 100px; width: 100px" />
+<img src="https://avatars1.githubusercontent.com/u/28061504?v=4" alt="bryan3023's profile picture" height="100" width="100" />
 
 [@bryan3023](https://github.com/bryan3023)

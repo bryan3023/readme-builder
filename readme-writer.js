@@ -88,7 +88,9 @@ function writeUserInfo(ownerName, profileUrl, avatarUrl, email) {
   const result = [
     'For questions, please contact:',
     '',
-    `<img src="${avatarUrl}" alt="${ownerName}'s profile picture" style="height: 100px; width: 100px" />`,
+//    `<img src="${avatarUrl}" alt="${ownerName}'s profile picture" style="height: 100px; width: 100px" />`,
+    `<img src="${avatarUrl}" alt="${ownerName}'s profile picture" height="100" width="100" />`,
+
     '',
     `[@${ownerName}](${profileUrl})`
   ];
