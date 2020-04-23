@@ -5,7 +5,8 @@
 
 const
   inquirer = require("inquirer"),
-  axios = require("axios");
+  axios = require("axios")
+  readmeWriter = require("./readme-writer.js");
 
 
 const
@@ -62,7 +63,8 @@ function getUserInfo() {
 
     axios.get(url).then(({data}) => {
       repoInfo.ownerName = username;
-      repoInfo.avatar_url = data.avatar_url;
+      repoInfo.profileUrl = data.html_url;
+      repoInfo.avatarUrl = data.avatar_url;
       chooseRepos(data.repos_url);
     })  
   });
@@ -98,7 +100,7 @@ function promptRepoQuestions() {
       repoInfo[item] = response[item];
     }
 
-    console.log(repoInfo);
+    readmeWriter.write(repoInfo);
   });
 }
 
