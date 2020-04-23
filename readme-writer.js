@@ -1,3 +1,5 @@
+"use strict;"
+
 const fs = require("fs");
 
 
@@ -16,7 +18,7 @@ function write(repoInfo) {
     writeCodeSection(
       "Installation",
       "To install dependencies, run the following:",
-      repoInfo.intall
+      repoInfo.install
     ),
     writeSection("Usage", repoInfo.usage),
     writeSection("License", repoInfo.license),
@@ -86,7 +88,7 @@ function writeUserInfo(ownerName, profileUrl, avatarUrl, email) {
   const result = [
     'For questions, please contact:',
     '',
-    `![${ownerName}'s avatar](${avatarUrl} =300x300)`,
+    `<img src="${avatarUrl}" alt="${ownerName}'s profile picture" style="height: 100px; width: 100px" />`,
     '',
     `[@${ownerName}](${profileUrl})`
   ];

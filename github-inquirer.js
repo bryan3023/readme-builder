@@ -3,6 +3,8 @@
   prompts (and a few API calls).
  */
 
+"use strict;"
+
 const
   inquirer = require("inquirer"),
   axios = require("axios")

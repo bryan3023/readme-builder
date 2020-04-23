@@ -2,7 +2,7 @@
 
 ## Description
 
-Test your JavaScript knowledge.
+Test your JavaScript knowledge!
 
 ## Table of Contents
 
@@ -18,12 +18,12 @@ Test your JavaScript knowledge.
 To install dependencies, run the following:
 
 ```sh
-
+n/a
 ```
 
 ## Usage
 
-Answer questions as quickly as you can, then add your initials to the scoreboard.
+Answer questions as quickly as possible, then add your initials to the scoreboard.
 
 ## License
 
@@ -45,6 +45,6 @@ echo "Thoughts and prayers"
 
 For questions, please contact:
 
-![bryan3023's avatar](https://avatars1.githubusercontent.com/u/28061504?v=4 =300x300)
+<img src="https://avatars1.githubusercontent.com/u/28061504?v=4" alt="bryan3023's profile picture" style="height: 100px; width: 100px" />
 
 [@bryan3023](https://github.com/bryan3023)
