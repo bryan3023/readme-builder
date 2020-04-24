@@ -1,7 +1,10 @@
-const githubInquirer = require("./github-inquirer.js");
+/*
+  Program entry point.
+ */
 
-function writeToFile(fileName, data) {
-}
+"use strict;"
+
+const githubInquirer = require("./github-inquirer.js");
 
 function init() {
   githubInquirer.getRepoInfo();

@@ -1,8 +1,15 @@
+/*
+  Write the README file and save it under the results folder.
+ */
+
 "use strict;"
 
 const fs = require("fs");
 
 
+/*
+  Build the README, then save it to the disk.
+ */
 function write(repoInfo) {
   const readme = [
     writeTitle(repoInfo.name),
@@ -25,7 +32,7 @@ function write(repoInfo) {
     writeSection("Contributing", repoInfo.contributions),
     writeCodeSection(
       "Testing",
-      "To run tests on the program, run the follwoing:",
+      "To run tests on the program, run the following:",
       repoInfo.test
     ),
     writeSection(
@@ -40,9 +47,12 @@ function write(repoInfo) {
   ].join('\n');
 
   saveReadme(repoInfo.name, readme)
-  console.log(readme)
 }
 
+
+/*
+  Write the title of the README.
+ */
 function writeTitle(repoName) {
   return [
     `# ${repoName}`,
@@ -50,6 +60,10 @@ function writeTitle(repoName) {
   ].join('\n');
 }
 
+
+/*
+  Write a section of the README.
+ */
 function writeSection(header, body) {
   return [
     writeHeader(header),
@@ -58,6 +72,10 @@ function writeSection(header, body) {
   ].join('\n');
 }
 
+
+/*
+  Write the header for a section.
+ */
 function writeHeader(header) {
   return [
     `## ${header}`,
@@ -65,15 +83,27 @@ function writeHeader(header) {
   ].join('\n');
 }
 
+
+/*
+  Write the table of contents.
+ */
 function writeTableOfContents(sections) {
   const toc = sections.map(section => `* [${section}](#${section})`).join('\n');
   return writeSection("Table of Contents", toc);
 }
 
+
+/*
+  Write a section with a code block in it.
+ */
 function writeCodeSection(header, decription, command) {
   return writeSection(header, writeCodeBody(decription,command));
 }
 
+
+/*
+  Write a code block preceeed by an informational message.
+ */
 function writeCodeBody(description, command) {
   return [
     description,
@@ -84,13 +114,16 @@ function writeCodeBody(description, command) {
   ].join('\n');
 }
 
+
+/*
+  Write the body of the "Questions" section, with contact info of the
+  repo owner.
+ */
 function writeUserInfo(ownerName, profileUrl, avatarUrl, email) {
   const result = [
     'For questions, please contact:',
     '',
-//    `<img src="${avatarUrl}" alt="${ownerName}'s profile picture" style="height: 100px; width: 100px" />`,
     `<img src="${avatarUrl}" alt="${ownerName}'s profile picture" height="100" width="100" />`,
-
     '',
     `[@${ownerName}](${profileUrl})`
   ];
@@ -100,6 +133,12 @@ function writeUserInfo(ownerName, profileUrl, avatarUrl, email) {
   return result.join('\n');
 }
 
+
+/*
+  Save the README file for the repo under:
+
+    $PROJECT_ROOT/results/$REPO_NAME/README.md
+ */
 function saveReadme(repo, readme) {
   const
     path = `results/${repo}`,
@@ -115,12 +154,17 @@ function saveReadme(repo, readme) {
   })
 }
 
+
+/*
+  Create a folder under the project directory if it does not exist.
+ */
 function createFolder(directory) {
   const path = `${__dirname}/${directory}`
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path);
   }
 }
+
 
 module.exports = {
   write

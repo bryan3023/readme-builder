@@ -48,12 +48,15 @@ const
       name: "contributions"
     }
   ],
-  emailPrompt =  {
+  emailPrompt = {
     message: "Email not found. Please provide or hit enter to leave blank.",
     name: "email"
   };
 
 
+/*
+  First link in the chain. Get the user's GitHub info.
+ */
 function getUserInfo() {
   inquirer.prompt([
     {
@@ -73,6 +76,10 @@ function getUserInfo() {
 }
 
 
+/*
+  Second link in the chain. Ask which of their repos the user wants a
+  README for.
+ */
 function chooseRepos(repos_url) {
   axios.get(repos_url).then(({data}) => {
     const choices = data.map(item => item.name)
@@ -92,6 +99,12 @@ function chooseRepos(repos_url) {
 }
 
 
+/*
+  Third link in the chain. Ask the user a sequence of questions for the
+  README. Also ask for email if it wasn't publicly available.
+
+  When done, pass the results to the ReadmeWriter.
+ */
 function promptRepoQuestions() {
   if (!repoInfo.email) {
     repoQuestions.unshift(emailPrompt);
@@ -101,7 +114,6 @@ function promptRepoQuestions() {
     for (let item in response) {
       repoInfo[item] = response[item];
     }
-
     readmeWriter.write(repoInfo);
   });
 }
