@@ -13,13 +13,14 @@ const fs = require("fs");
 function write(repoInfo) {
   const readme = [
     writeTitle(repoInfo.name),
+    writeBadgeBar(repoInfo.repoUrl),
     writeSection("Description", repoInfo.description),
     writeTableOfContents([
       'Installation',
       'Usage',
       'License',
       'Contributing',
-      'Tests',
+      'Testing',
       'Questions'
     ]),
     writeCodeSection(
@@ -56,6 +57,15 @@ function write(repoInfo) {
 function writeTitle(repoName) {
   return [
     `# ${repoName}`,
+    ''
+  ].join('\n');
+}
+
+
+function writeBadgeBar(repoUrl) {
+  return [
+    '',
+    `[![ForTheBadge built-by-developers](http://ForTheBadge.com/images/badges/built-by-developers.svg)](${repoUrl})`,
     ''
   ].join('\n');
 }

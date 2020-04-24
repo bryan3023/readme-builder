@@ -93,6 +93,7 @@ function chooseRepos(repos_url) {
       }
     ]).then(({repo}) => {
       repoInfo.name = repo;
+      repoInfo.repoUrl = data.filter(item => item.name === repo)[0].html_url;
       promptRepoQuestions();
     })
   })
