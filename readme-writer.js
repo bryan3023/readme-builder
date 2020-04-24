@@ -138,7 +138,7 @@ function writeUserInfo(ownerName, profileUrl, avatarUrl, email) {
     `[@${ownerName}](${profileUrl})`
   ];
   if (email) {
-    result.push(`[${email}](mailtto:${email})`)
+    result.push(`[${email}](mailto:${email})`)
   }
   return result.join('\n');
 }
