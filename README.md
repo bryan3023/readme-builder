@@ -8,7 +8,7 @@ Asks the user a series of questions and uses that information to automatically b
 
 The program starts off by asking the user for their GitHub username. From there, it asks which of their repos they'd like to generate a readme for. From there, is asks a series of questions about the repo. It then uses that information to create the readme in Markdown format, saving it under *project-root*/results/*repo-name*/README.md
 
-[Watch it in action.]("https://drive.google.com/file/d/1AZsxF8Kr77fZVIjAfVOdY0j4LRwx6MUO/preview")
+[Watch it in action.](https://drive.google.com/file/d/1AZsxF8Kr77fZVIjAfVOdY0j4LRwx6MUO/preview)
 
 ## Installation and Usage
 
