@@ -70,6 +70,9 @@ function getUserInfo() {
       repoInfo.ownerName = username;
       repoInfo.profileUrl = data.html_url;
       repoInfo.avatarUrl = data.avatar_url;
+      if (data.email) {
+        repoInfo.email = data.email;
+      }
       chooseRepos(data.repos_url);
     })  
   });
